@@ -1,5 +1,8 @@
 # axohtml
 
+![Github Actions Rust](https://github.com/axodotdev/axohtml/actions/workflows/rust.yml/badge.svg)
+![crates.io](https://img.shields.io/crates/v/axohtml.svg)
+
 This crate provides the `html!` macro for building fully type checked HTML
 documents inside your Rust code using roughly [JSX] compatible syntax. 
 
