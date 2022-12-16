@@ -23,11 +23,11 @@
 //!             </p>
 //!             { (0..3).map(|_| html!(
 //!                 <p class="emphasis">
-//!                     "Her name is Kitty White."
+//!                     ">o_o<"
 //!                 </p>
 //!             )) }
 //!             <p class="citation-needed">
-//!                 "We still don't know how she eats."
+//!                 "Every company should be a developer experience company."
 //!             </p>
 //!         </body>
 //!     </html>
