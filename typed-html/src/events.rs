@@ -172,9 +172,11 @@ mod tests {
 
     #[test]
     fn test_events_iter() {
-        let mut events: Events<&str> = Events::default();
-        events.abort = Some("abort");
-        events.waiting = Some("waiting");
+        let events = Events::<&str> {
+            abort: Some("abort"),
+            waiting: Some("waiting"),
+            ..Default::default()
+        };
 
         let mut iter = events.iter();
         assert_eq!(iter.next(), Some(("abort", &"abort")));
@@ -184,9 +186,11 @@ mod tests {
 
     #[test]
     fn test_events_iter_mut() {
-        let mut events: Events<&str> = Events::default();
-        events.abort = Some("abort");
-        events.waiting = Some("waiting");
+        let mut events = Events::<&str> {
+            abort: Some("abort"),
+            waiting: Some("waiting"),
+            ..Default::default()
+        };
 
         let mut iter = events.iter_mut();
         assert_eq!(iter.next(), Some(("abort", &mut "abort")));
@@ -196,9 +200,11 @@ mod tests {
 
     #[test]
     fn test_events_into_iter() {
-        let mut events: Events<&str> = Events::default();
-        events.abort = Some("abort");
-        events.waiting = Some("waiting");
+        let events = Events::<&str> {
+            abort: Some("abort"),
+            waiting: Some("waiting"),
+            ..Default::default()
+        };
 
         let mut iter = events.into_iter();
         assert_eq!(iter.next(), Some(("abort", "abort")));
