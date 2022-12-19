@@ -14,14 +14,6 @@ maintain the Wasm compatibility (for now).
 [Bodil Stokke's]: https://github.com/bodil
 [typed-html]: https://github.com/bodil/typed-html
 
-## Company-focused Maintenance
-
-This project is currently being maintained soley for use in [@axodotdev's]
-open source projects. Feel free to file issues or PRs but anticipate that they
-won't be prioritized (for now).
-
-[@axodotdev's]: https://github.com/axodotdev
-
 ## Quick Preview
 
 ```rust
