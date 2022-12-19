@@ -33,7 +33,33 @@ pub fn global_attrs(span: Span) -> StringyMap<Ident, TokenStream> {
         insert("tabindex", "isize");
         insert("title", "String");
 
-        // FIXME ARIA and XML attrs missing
+        // ARIA
+        insert("aria_autocomplete", "String");
+        insert("aria_checked", "crate::types::Bool");
+        insert("aria_disabled", "crate::types::Bool");
+        insert("aria_errormessage", "String");
+        insert("aria_expanded", "crate::types::Bool");
+        insert("aria_haspopup", "crate::types::Bool");
+        insert("aria_hidden", "crate::types::Bool");
+        insert("aria_invalid", "crate::types::Bool");
+        insert("aria_label", "String");
+        insert("aria_modal", "crate::types::Bool");
+        insert("aria_multiline", "crate::types::Bool");
+        insert("aria_multiselectable", "crate::types::Bool");
+        insert("aria_orientation", "String"); // TODO Only supports some values https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-orientation
+        insert("aria_placeholder", "String");
+        insert("aria_pressed", "crate::types::Bool");
+        insert("aria_readonly", "crate::types::Bool");
+        insert("aria_required", "crate::types::Bool");
+        insert("aria_selected", "crate::types::Bool");
+        insert("aria_placeholder", "String");
+        insert("aria_sort", "String"); // TODO only supports some values
+        insert("aria_valuemax", "isize");
+        insert("aria_valuemin", "isize");
+        insert("aria_valuenow", "isize");
+        insert("aria_valuetext", "String");
+
+        // FIXME XML attrs missing
     }
     attrs
 }

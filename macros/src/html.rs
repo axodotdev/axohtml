@@ -97,6 +97,21 @@ fn extract_event_handlers(
     events
 }
 
+fn extract_aria_attributes(
+    attrs: &mut StringyMap<Ident, TokenTree>,
+) -> StringyMap<String, TokenTree> {
+    let mut data = StringyMap::new();
+    let keys: Vec<Ident> = attrs.keys().cloned().collect();
+    for key in keys {
+        let key_name = key.to_string();
+        if let Some(key_name) = key_name.strip_prefix("aria_") {
+            let value = attrs.remove(&key).unwrap();
+            data.insert(key_name.to_string(), value);
+        }
+    }
+    data
+}
+
 fn process_value(value: &TokenTree) -> TokenStream {
     match value {
         TokenTree::Group(g) if g.delimiter() == Delimiter::Bracket => {
@@ -146,6 +161,7 @@ impl Element {
         }
         let events = extract_event_handlers(&mut self.attributes);
         let data_attrs = extract_data_attrs(&mut self.attributes);
+        let aria_attrs = extract_aria_attributes(&mut self.attributes);
         let attrs = self.attributes.iter().map(|(key, value)| {
             (
                 key.to_string(),
@@ -217,6 +233,16 @@ impl Element {
                 element.data_attributes.push((#key, #value.into()));
             ));
         }
+
+        for (key, value) in aria_attrs
+            .iter()
+            .map(|(k, v)| (TokenTree::from(Literal::string(k)), v.clone()))
+        {
+            body.extend(quote!(
+                element.aria_attributes.push((#key, #value.into()));
+            ));
+        }
+
         body.extend(opt_children);
 
         for (key, value) in events.iter() {

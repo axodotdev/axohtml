@@ -102,6 +102,7 @@ impl Declare {
             pub struct #elem_name<T> where T: crate::OutputType + Send {
                 pub attrs: #attr_type_name,
                 pub data_attributes: Vec<(&'static str, String)>,
+                pub aria_attributes: Vec<(&'static str, String)>,
                 pub events: T::Events,
                 #body
             }
@@ -127,6 +128,7 @@ impl Declare {
             attrs: #attr_type_name { #attrs },
         ));
         body.extend(quote!(data_attributes: Vec::new(),));
+        body.extend(quote!(aria_attributes: Vec::new(),));
 
         for (child_name, _, _) in self.req_children() {
             body.extend(quote!( #child_name, ));
@@ -175,6 +177,7 @@ impl Declare {
             let mut attributes = Vec::new();
             #push_attrs
             attributes.extend(self.data_attributes.clone());
+            attributes.extend(self.aria_attributes.clone());
 
             let mut children = Vec::new();
             #req_children
@@ -238,6 +241,10 @@ impl Declare {
                     let mut out = Vec::new();
                     #push_attrs
                     for (key, value) in &self.data_attributes {
+                        out.push((key, value.to_string()));
+                    }
+
+                    for (key, value) in &self.aria_attributes {
                         out.push((key, value.to_string()));
                     }
                     out
@@ -351,6 +358,10 @@ impl Declare {
                     #print_attrs
                     for (key, value) in &self.data_attributes {
                         write!(f, " data-{}=\"{}\"", key,
+                               crate::escape_html_attribute(value.to_string()))?;
+                    }
+                    for (key, value) in &self.aria_attributes {
+                        write!(f, " aria-{}=\"{}\"", key,
                                crate::escape_html_attribute(value.to_string()))?;
                     }
                     write!(f, "{}", self.events)?;
