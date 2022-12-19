@@ -255,6 +255,32 @@ pub enum Metadata {
 }
 
 #[derive(EnumString, Display, PartialEq, Eq, PartialOrd, Ord, AsRefStr, IntoStaticStr)]
+pub enum MetadataProperties {
+    #[strum(to_string = "og:title")]
+    Title,
+    #[strum(to_string = "og:type")]
+    Type,
+    #[strum(to_string = "og:image")]
+    Image,
+    #[strum(to_string = "og:url")]
+    Homepage,
+    #[strum(to_string = "og:audio")]
+    Audio,
+    #[strum(to_string = "og:description")]
+    Description,
+    #[strum(to_string = "og:determiner")]
+    Determiner,
+    #[strum(to_string = "og:locale")]
+    Locale,
+    #[strum(to_string = "og:site_name")]
+    ParentSiteName,
+    #[strum(to_string = "og:video")]
+    Video,
+    #[strum(to_string = "og:locale:alternate")]
+    ExtraLocales,
+}
+
+#[derive(EnumString, Display, PartialEq, Eq, PartialOrd, Ord, AsRefStr, IntoStaticStr)]
 pub enum OnOff {
     #[strum(to_string = "on")]
     On,

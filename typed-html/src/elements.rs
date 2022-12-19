@@ -78,6 +78,8 @@ declare_elements! {
         content: String,
         http_equiv: HTTPEquiv,
         name: Metadata,
+        // non standard, uses https://en.wikipedia.org/wiki/RDFa
+        property: MetadataProperties,
     } in [MetadataContent];
     style {
         type: Mime,
@@ -458,4 +460,17 @@ fn test_data_attributes() {
     let frag: DOMTree<String> = html!(<div data-id="1234">"Boo!"</div>);
 
     assert_eq!("<div data-id=\"1234\">Boo!</div>", frag.to_string());
+}
+#[test]
+fn test_meta_tags() {
+    use crate as axohtml;
+    use crate::{dom::DOMTree, html};
+
+    let frag: DOMTree<String> = html!(<meta property="og:url" content="http://example.com"/>
+    );
+
+    assert_eq!(
+        "<meta content=\"http://example.com\" property=\"og:url\"/>",
+        frag.to_string()
+    );
 }
