@@ -78,6 +78,7 @@ declare_elements! {
         content: String,
         http_equiv: HTTPEquiv,
         name: Metadata,
+        // non standard, uses https://en.wikipedia.org/wiki/RDFa
         property: MetadataProperties,
     } in [MetadataContent];
     style {
