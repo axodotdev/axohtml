@@ -474,3 +474,17 @@ fn test_meta_tags() {
         frag.to_string()
     );
 }
+
+#[test]
+fn test_aria() {
+    use crate as axohtml;
+    use crate::{dom::DOMTree, html};
+
+    let frag: DOMTree<String> = html!(<div aria_hidden="true" aria_label="hello" />
+    );
+
+    assert_eq!(
+        "<div aria-hidden=\"true\" aria-label=\"hello\"></div>",
+        frag.to_string()
+    );
+}
