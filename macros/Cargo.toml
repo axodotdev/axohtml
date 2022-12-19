@@ -1,6 +1,6 @@
 [package]
 name = "axohtml-macros"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2018"
 authors = ["Axo Developer Co <hello@axo.dev>", "Bodil Stokke <bodil@bodil.org>"]
 build = "build.rs"
@@ -18,7 +18,7 @@ proc-macro = true
 [dependencies]
 lalrpop-util = "0.19"
 ansi_term = "0.12.0"
-proc-macro2 = { version = "1.0.4", features = ["nightly"] }
+proc-macro2 = "1.0.49"
 quote = "1.0.2"
 
 [build-dependencies]
