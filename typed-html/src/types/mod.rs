@@ -537,3 +537,15 @@ pub enum Wrap {
     #[strum(to_string = "off")]
     Off,
 }
+
+#[derive(EnumString, Display, PartialEq, Eq, PartialOrd, Ord, AsRefStr, IntoStaticStr)]
+pub enum AriaSort {
+    #[strum(to_string = "ascending")]
+    Ascending,
+    #[strum(to_string = "descending")]
+    Descending,
+    #[strum(to_string = "none")]
+    None,
+    #[strum(to_string = "other")]
+    Other,
+}
