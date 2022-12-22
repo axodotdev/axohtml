@@ -40,6 +40,7 @@ marker_trait!(PhrasingContent, FlowContent);
 marker_trait!(EmbeddedContent);
 marker_trait!(InteractiveContent);
 marker_trait!(FormContent);
+marker_trait!(SvgContent);
 
 // Traits for elements that are more picky about their children
 marker_trait!(DescriptionListContent);
@@ -98,7 +99,7 @@ declare_elements! {
         rel: SpacedList<LinkType>,
         target: Target,
         type: Mime,
-    } in [FlowContent, PhrasingContent, InteractiveContent] with FlowContent;
+    } in [FlowContent, PhrasingContent, InteractiveContent, SvgContent] with FlowContent;
     abbr in [FlowContent, PhrasingContent] with PhrasingContent;
     address in [FlowContent] with FlowContent;
     article in [FlowContent, SectioningContent] with FlowContent;
@@ -435,6 +436,45 @@ declare_elements! {
         srclang: LanguageTag,
     } in [MediaContent];
 
+    svg {
+        height: String,
+        preserveAspectRatio: PreserveAspectRatio,
+        viewBox: String,
+        x: String,
+        y: String,
+        xmlns: String,
+        clip-path: String,
+        clip-rule: String,
+        color: String,
+        color-interpolation: String,
+        color-rendering: String,
+        cursor: String,
+        display: String,
+        fill: String,
+        fill-opacity: String,
+        fill-rule: String,
+        filter: String,
+        mask: String,
+        opacity: String,
+        pointer-events: String,
+        shape-rendering: String,
+        stroke: String,
+        stroke-dasharray: String,
+        stroke-dashoffset: String,
+        stroke-linecap: String,
+        stroke-linejoin: String,
+        stroke-miterlimit: String,
+        stroke-opacity: String,
+        stroke-width: String,
+        transform: String,
+        vector-effect: String,
+        visibility: String
+    } in [FlowContent] with SvgContent;
+    path {
+        d: String,
+        pathLength: usize,
+    } in [SvgContent] with SvgContent;
+
     // Don't @ me
     blink in [FlowContent, PhrasingContent] with PhrasingContent;
     marquee {
@@ -481,6 +521,23 @@ fn test_aria() {
     use crate::{dom::DOMTree, html};
 
     let frag: DOMTree<String> = html!(<div aria_hidden="true" aria_label="hello" />
+    );
+
+    assert_eq!(
+        "<div aria-hidden=\"true\" aria-label=\"hello\"></div>",
+        frag.to_string()
+    );
+}
+
+#[test]
+fn test_svg() {
+    use crate as axohtml;
+    use crate::{dom::DOMTree, html};
+
+    let frag: DOMTree<String> = html!(
+    <svg width="29.018px" height="29.018px" viewBox="0 -0.59 29.018 29.018" id="_25_-_Star" xmlns="http://www.w3.org/2000/svg">
+    <path id="_25_-_Star-2" d="M13.645,4.01l-2.057,6.334a1.013,1.013,0,0,1-.962.7H3.967a2.475,2.475,0,0,0-1.456,4.478L7.9,19.435a1.011,1.011,0,0,1,.367,1.131L6.208,26.9a2.476,2.476,0,0,0,3.81,2.768l5.388-3.914a1.012,1.012,0,0,1,1.188,0l5.388,3.914a2.476,2.476,0,0,0,3.81-2.768l-2.058-6.333a1.011,1.011,0,0,1,.367-1.131l5.388-3.914a2.475,2.475,0,0,0-1.456-4.478H21.374a1.013,1.013,0,0,1-.962-.7L18.355,4.01a2.477,2.477,0,0,0-4.71,0Zm1.9.618a.475.475,0,0,1,.9,0l2.058,6.334a3.012,3.012,0,0,0,2.864,2.081h6.659a.475.475,0,0,1,.28.86l-5.387,3.914a3.011,3.011,0,0,0-1.094,3.367l2.058,6.333a.476.476,0,0,1-.733.532L17.77,24.135a3.011,3.011,0,0,0-3.54,0L8.843,28.049a.476.476,0,0,1-.733-.532l2.058-6.333a3.011,3.011,0,0,0-1.094-3.367L3.687,13.9a.475.475,0,0,1,.28-.86h6.659a3.012,3.012,0,0,0,2.864-2.081l2.058-6.334Z" transform="translate(-1.491 -2.3)" fill-rule="evenodd"/>
+    </svg>
     );
 
     assert_eq!(
