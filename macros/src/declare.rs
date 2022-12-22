@@ -357,7 +357,7 @@ impl Declare {
                     write!(f, "<{}", #name)?;
                     #print_attrs
                     for (key, value) in &self.data_attributes {
-                        write!(f, " data-{}=\"{}\"", key,
+                        write!(f, " data-{}=\"{}\"", str::replace(key, "_", "-"),
                                crate::escape_html_attribute(value.to_string()))?;
                     }
                     for (key, value) in &self.aria_attributes {
