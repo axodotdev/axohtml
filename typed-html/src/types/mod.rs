@@ -594,3 +594,11 @@ pub enum PreserveAspectRatio {
     #[strum(to_string = "xMaxYMax slice")]
     XMaxYMaxSlice,
 }
+
+#[derive(EnumString, Display, PartialEq, Eq, PartialOrd, Ord, AsRefStr, IntoStaticStr)]
+pub enum ClipPathIUnits {
+    #[strum(to_string = "userSpaceOnUse")]
+    UserSpaceOnUse,
+    #[strum(to_string = "objectBoundingBox")]
+    ObjectBoundingBox,
+}

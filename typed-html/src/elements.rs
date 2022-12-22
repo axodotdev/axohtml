@@ -41,6 +41,8 @@ marker_trait!(EmbeddedContent);
 marker_trait!(InteractiveContent);
 marker_trait!(FormContent);
 marker_trait!(SvgContent);
+marker_trait!(ClipPathContent);
+marker_trait!(DefsContent);
 
 // Traits for elements that are more picky about their children
 marker_trait!(DescriptionListContent);
@@ -473,7 +475,17 @@ declare_elements! {
     path {
         d: String,
         pathLength: usize,
-    } in [SvgContent] with SvgContent;
+    } in [SvgContent, ClipPathContent, DefsContent];
+    circle {
+        cx: String,
+        pathLength: usize,
+        cy: String,
+        r: String
+    } in [SvgContent, ClipPathContent, DefsContent];
+    clipPath {
+        clipPathUnits: ClipPathIUnits,
+    } in [SvgContent] with ClipPathContent;
+    defs in [SvgContent] with DefsContent;
 
     // Don't @ me
     blink in [FlowContent, PhrasingContent] with PhrasingContent;
