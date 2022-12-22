@@ -537,3 +537,104 @@ pub enum Wrap {
     #[strum(to_string = "off")]
     Off,
 }
+
+#[derive(EnumString, Display, PartialEq, Eq, PartialOrd, Ord, AsRefStr, IntoStaticStr)]
+pub enum AriaSort {
+    #[strum(to_string = "ascending")]
+    Ascending,
+    #[strum(to_string = "descending")]
+    Descending,
+    #[strum(to_string = "none")]
+    None,
+    #[strum(to_string = "other")]
+    Other,
+}
+
+#[derive(EnumString, Display, PartialEq, Eq, PartialOrd, Ord, AsRefStr, IntoStaticStr)]
+pub enum PreserveAspectRatio {
+    #[strum(to_string = "none meet")]
+    NoneMeet,
+    #[strum(to_string = "xMinYMin meet")]
+    XMinYMinMeet,
+    #[strum(to_string = "xMidYMin meet")]
+    XMidYMinMeet,
+    #[strum(to_string = "xMaxYMin meet")]
+    XMaxYMinMeet,
+    #[strum(to_string = "xMinYMid meet")]
+    XMinYMidMeet,
+    #[strum(to_string = "xMidYMid meet")]
+    XMidYMidMeet,
+    #[strum(to_string = "xMaxYMid meet")]
+    XMaxYMidMeet,
+    #[strum(to_string = "xMinYMax meet")]
+    XMinYMaxMeet,
+    #[strum(to_string = "xMidYMax meet")]
+    XMidYMaxMeet,
+    #[strum(to_string = "xMaxYMax meet")]
+    XMaxYMaxMeet,
+
+    #[strum(to_string = "none slice")]
+    NoneSlice,
+    #[strum(to_string = "xMinYMin slice")]
+    XMinYMinSlice,
+    #[strum(to_string = "xMidYMin slice")]
+    XMidYMinSlice,
+    #[strum(to_string = "xMaxYMin slice")]
+    XMaxYMinSlice,
+    #[strum(to_string = "xMinYMid slice")]
+    XMinYMidSlice,
+    #[strum(to_string = "xMidYMid slice")]
+    XMidYMidSlice,
+    #[strum(to_string = "xMaxYMid slice")]
+    XMaxYMidSlice,
+    #[strum(to_string = "xMinYMax slice")]
+    XMinYMaxSlice,
+    #[strum(to_string = "xMidYMax slice")]
+    XMidYMaxSlice,
+    #[strum(to_string = "xMaxYMax slice")]
+    XMaxYMaxSlice,
+}
+
+#[derive(EnumString, Display, PartialEq, Eq, PartialOrd, Ord, AsRefStr, IntoStaticStr)]
+pub enum ClipPathIUnits {
+    #[strum(to_string = "userSpaceOnUse")]
+    UserSpaceOnUse,
+    #[strum(to_string = "objectBoundingBox")]
+    ObjectBoundingBox,
+}
+
+#[derive(EnumString, Display, PartialEq, Eq, PartialOrd, Ord, AsRefStr, IntoStaticStr)]
+pub enum Blends {
+    #[strum(to_string = "normal")]
+    Normal,
+    #[strum(to_string = "multiply")]
+    Multiply,
+    #[strum(to_string = "screen")]
+    Screen,
+    #[strum(to_string = "overlay")]
+    Overlay,
+    #[strum(to_string = "darken")]
+    Darken,
+    #[strum(to_string = "lighten")]
+    Lighten,
+    #[strum(to_string = "color-dodge")]
+    ColorDodge,
+    #[strum(to_string = "color-burn")]
+    ColorBurn,
+    #[strum(to_string = "hard-light")]
+    HardLight,
+    #[strum(to_string = "soft-light")]
+    SoftLight,
+    #[strum(to_string = "difference")]
+    Difference,
+    #[strum(to_string = "exclusion")]
+    Exclusion,
+    #[strum(to_string = "hue")]
+    Hue,
+    #[strum(to_string = "saturation")]
+    Saturation,
+    #[strum(to_string = "color")]
+    Color,
+    #[strum(to_string = "luminosity")]
+    Luminosity,
+}
