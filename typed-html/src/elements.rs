@@ -43,6 +43,7 @@ marker_trait!(FormContent);
 marker_trait!(SvgContent);
 marker_trait!(ClipPathContent);
 marker_trait!(DefsContent);
+marker_trait!(FilterContent);
 
 // Traits for elements that are more picky about their children
 marker_trait!(DescriptionListContent);
@@ -440,6 +441,7 @@ declare_elements! {
 
     svg {
         height: String,
+        width: String,
         preserveAspectRatio: PreserveAspectRatio,
         viewBox: String,
         x: String,
@@ -486,7 +488,28 @@ declare_elements! {
         clipPathUnits: ClipPathIUnits,
     } in [SvgContent] with ClipPathContent;
     defs in [SvgContent] with DefsContent;
+    desc in [SvgContent] with PhrasingContent;
 
+    ellipse {
+        cx: String,
+        pathLength: usize,
+        cy: String,
+        rx: String,
+        ry: String
+    } in [SvgContent, ClipPathContent, DefsContent];
+    feBlend {
+        _in: String, // TODO OMG FUCK THIS
+        in2: usize,
+        mode: Blends
+    } in [SvgContent, ClipPathContent, DefsContent, FilterContent];
+    filter {
+        x: String,
+        y: String,
+        width: String,
+        height: String,
+        filterUnits: ClipPathIUnits,
+        primitiveUnits: ClipPathIUnits,
+    } in [SvgContent, ClipPathContent, DefsContent] with FilterContent;
     // Don't @ me
     blink in [FlowContent, PhrasingContent] with PhrasingContent;
     marquee {

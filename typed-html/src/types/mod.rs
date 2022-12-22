@@ -602,3 +602,39 @@ pub enum ClipPathIUnits {
     #[strum(to_string = "objectBoundingBox")]
     ObjectBoundingBox,
 }
+
+#[derive(EnumString, Display, PartialEq, Eq, PartialOrd, Ord, AsRefStr, IntoStaticStr)]
+pub enum Blends {
+    #[strum(to_string = "normal")]
+    Normal,
+    #[strum(to_string = "multiply")]
+    Multiply,
+    #[strum(to_string = "screen")]
+    Screen,
+    #[strum(to_string = "overlay")]
+    Overlay,
+    #[strum(to_string = "darken")]
+    Darken,
+    #[strum(to_string = "lighten")]
+    Lighten,
+    #[strum(to_string = "color-dodge")]
+    ColorDodge,
+    #[strum(to_string = "color-burn")]
+    ColorBurn,
+    #[strum(to_string = "hard-light")]
+    HardLight,
+    #[strum(to_string = "soft-light")]
+    SoftLight,
+    #[strum(to_string = "difference")]
+    Difference,
+    #[strum(to_string = "exclusion")]
+    Exclusion,
+    #[strum(to_string = "hue")]
+    Hue,
+    #[strum(to_string = "saturation")]
+    Saturation,
+    #[strum(to_string = "color")]
+    Color,
+    #[strum(to_string = "luminosity")]
+    Luminosity,
+}
