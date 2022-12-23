@@ -53,7 +53,7 @@ pub fn global_attrs(span: Span) -> StringyMap<Ident, TokenStream> {
         insert("aria_required", "crate::types::Bool");
         insert("aria_selected", "crate::types::Bool");
         insert("aria_placeholder", "String");
-        insert("aria_sort", "String"); // TODO only supports some values
+        insert("aria_sort", "crate::types::AriaSort"); // TODO only supports some values
         insert("aria_valuemax", "isize");
         insert("aria_valuemin", "isize");
         insert("aria_valuenow", "isize");
