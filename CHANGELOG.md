@@ -11,9 +11,9 @@
   - [`aria-sort`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-sort)
   - [`aria-orientation`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-orientation)
 
-[`aria-sort PR`](https://github.com/axodotdev/axohtml/pull/12)
+  [`aria-sort PR`](https://github.com/axodotdev/axohtml/pull/12)
 
-[`aria-orientation PR`](https://github.com/axodotdev/axohtml/pull/11)
+  [`aria-orientation PR`](https://github.com/axodotdev/axohtml/pull/11)
 
 ### 🛠️ Fixes
 
@@ -21,19 +21,19 @@
 
   Our support for `data` attributes was limited in the way that it only supported one hyphen in said attributes, well, no more, use as many hyphens as your heart pleases
 
-[**`PR`**](https://github.com/axodotdev/axohtml/pull/10)
+  [**`PR`**](https://github.com/axodotdev/axohtml/pull/10)
 
 - **✨ Allow `script` tags in HTML** - [SaraVieira]
 
   We now allow you to add script tags in the HTML after the body as the HTML standards also allow
 
-[**`PR`**](https://github.com/axodotdev/axohtml/pull/10)
+  [**`PR`**](https://github.com/axodotdev/axohtml/pull/10)
 
 - **✨ Allow unescaped text in`script`** - [SaraVieira]
 
   Until now we were escaping the text passed down to the `script` tag and in the `script` tag is the only place we are sure we don't want to escape that so that's fixed and you can add `script` tags with unescaped text inside
 
-[**`PR`**](https://github.com/axodotdev/axohtml/pull/14)
+  [**`PR`**](https://github.com/axodotdev/axohtml/pull/14)
 
 ## 0.2.0 - 2022-12-19
 
