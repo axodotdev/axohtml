@@ -2,7 +2,7 @@
 
 #![allow(non_camel_case_types)]
 
-use crate::dom::{Node, TextNode};
+use crate::dom::{Node, TextNode, UnsafeTextNode};
 use crate::types::*;
 use crate::OutputType;
 use axohtml_macros::declare_elements;
@@ -311,7 +311,7 @@ declare_elements! {
         src: Uri,
         text: String,
         type: String, // TODO could be an enum
-    } in [MetadataContent, FlowContent, PhrasingContent, TableColumnContent] with PhrasingContent;
+    } in [MetadataContent, FlowContent, PhrasingContent, TableColumnContent] with UnsafeTextNode;
     section in [FlowContent, SectioningContent] with FlowContent;
     select {
         autocomplete: String,
@@ -492,14 +492,9 @@ fn test_aria() {
 #[test]
 fn test_js() {
     use crate as axohtml;
-    use crate::{dom::DOMTree, html, text, unsafe_text};
+    use crate::{dom::DOMTree, html, unsafe_text};
 
     let frag: DOMTree<String> = html!(<script>{unsafe_text!("console.log('{}')", "sup")}</script>);
-    let frag1: DOMTree<String> = html!(<script>{text!("console.log('{}')", "sup")}</script>);
 
     assert_eq!("<script>console.log('sup')</script>", frag.to_string());
-    assert_eq!(
-        "<script>console.log(&#x27;sup&#x27;)</script>",
-        frag1.to_string()
-    );
 }
