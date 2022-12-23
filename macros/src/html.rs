@@ -76,7 +76,10 @@ fn extract_data_attrs(attrs: &mut StringyMap<Ident, TokenTree>) -> StringyMap<St
         let key_name = key.to_string();
         if let Some(key_name) = key_name.strip_prefix("data_") {
             let value = attrs.remove(&key).unwrap();
-            data.insert(key_name.to_string(), value);
+            // makes sure if a data attribute has more than one hyphen
+            // they all get transformed
+            let key = str::replace(key_name, "_", "-");
+            data.insert(key.to_string(), value);
         }
     }
     data
