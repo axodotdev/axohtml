@@ -31,6 +31,7 @@ macro_rules! marker_trait {
     };
 }
 
+marker_trait!(HTMLContent);
 marker_trait!(MetadataContent);
 marker_trait!(FlowContent);
 marker_trait!(SectioningContent);
@@ -53,7 +54,7 @@ marker_trait!(TableColumnContent);
 declare_elements! {
     html {
         xmlns: Uri,
-    } with [head, body];
+    } with [head, body] HTMLContent;
     head with [title] MetadataContent;
     body with FlowContent;
 
@@ -311,7 +312,7 @@ declare_elements! {
         src: Uri,
         text: String,
         type: String, // TODO could be an enum
-    } in [MetadataContent, FlowContent, PhrasingContent, TableColumnContent] with UnsafeTextNode;
+    } in [MetadataContent, FlowContent, PhrasingContent, TableColumnContent, HTMLContent] with UnsafeTextNode;
     section in [FlowContent, SectioningContent] with FlowContent;
     select {
         autocomplete: String,
