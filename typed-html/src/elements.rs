@@ -2,7 +2,7 @@
 
 #![allow(non_camel_case_types)]
 
-use crate::dom::{Node, TextNode};
+use crate::dom::{Node, TextNode, UnsafeTextNode};
 use crate::types::*;
 use crate::OutputType;
 use axohtml_macros::declare_elements;
@@ -312,7 +312,7 @@ declare_elements! {
         src: Uri,
         text: String,
         type: String, // TODO could be an enum
-    } in [MetadataContent, FlowContent, PhrasingContent, TableColumnContent, HTMLContent] with TextNode;
+    } in [MetadataContent, FlowContent, PhrasingContent, TableColumnContent, HTMLContent] with UnsafeTextNode;
     section in [FlowContent, SectioningContent] with FlowContent;
     select {
         autocomplete: String,
@@ -488,4 +488,14 @@ fn test_aria() {
         "<div aria-hidden=\"true\" aria-label=\"hello\"></div>",
         frag.to_string()
     );
+}
+
+#[test]
+fn test_js() {
+    use crate as axohtml;
+    use crate::{dom::DOMTree, html, unsafe_text};
+
+    let frag: DOMTree<String> = html!(<script>{unsafe_text!("console.log('{}')", "sup")}</script>);
+
+    assert_eq!("<script>console.log('sup')</script>", frag.to_string());
 }
