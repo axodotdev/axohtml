@@ -46,7 +46,7 @@ pub fn global_attrs(span: Span) -> StringyMap<Ident, TokenStream> {
         insert("aria_modal", "crate::types::Bool");
         insert("aria_multiline", "crate::types::Bool");
         insert("aria_multiselectable", "crate::types::Bool");
-        insert("aria_orientation", "String"); // TODO Only supports some values https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-orientation
+        insert("aria_orientation", "crate::types::AriaOrientation");
         insert("aria_placeholder", "String");
         insert("aria_pressed", "crate::types::Bool");
         insert("aria_readonly", "crate::types::Bool");

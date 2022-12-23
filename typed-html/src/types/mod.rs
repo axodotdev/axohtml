@@ -537,3 +537,11 @@ pub enum Wrap {
     #[strum(to_string = "off")]
     Off,
 }
+
+#[derive(EnumString, Display, PartialEq, Eq, PartialOrd, Ord, AsRefStr, IntoStaticStr)]
+pub enum AriaOrientation {
+    #[strum(to_string = "horizontal")]
+    Horizontal,
+    #[strum(to_string = "vertical")]
+    Vertical,
+}
