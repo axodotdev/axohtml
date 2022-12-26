@@ -252,7 +252,7 @@ pub enum Metadata {
     Robots,
     #[strum(to_string = "viewport")]
     Viewport,
-    // https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
+    // Twitter Social meta card tags -> https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
     #[strum(to_string = "twitter:card")]
     TwitterCard,
     #[strum(to_string = "twitter:site:id")]
