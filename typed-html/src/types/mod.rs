@@ -311,10 +311,22 @@ pub enum MetadataProperties {
     Image,
     #[strum(to_string = "og:image:alt")]
     ImageAlt,
+    #[strum(to_string = "og:image:type")]
+    ImageType,
+    #[strum(to_string = "og:image:width")]
+    ImageWidth,
+    #[strum(to_string = "og:image:height")]
+    ImageHeight,
+    #[strum(to_string = "og:image:secure_url")]
+    ImageSecureUrl,
     #[strum(to_string = "og:url")]
     Homepage,
     #[strum(to_string = "og:audio")]
     Audio,
+    #[strum(to_string = "og:audio:type")]
+    AudioType,
+    #[strum(to_string = "og:audio:secure_url")]
+    AudioSecureUrl,
     #[strum(to_string = "og:description")]
     Description,
     #[strum(to_string = "og:determiner")]
@@ -325,6 +337,16 @@ pub enum MetadataProperties {
     ParentSiteName,
     #[strum(to_string = "og:video")]
     Video,
+    #[strum(to_string = "og:video:alt")]
+    VideoAlt,
+    #[strum(to_string = "og:video:type")]
+    VideoType,
+    #[strum(to_string = "og:video:width")]
+    VideoWidth,
+    #[strum(to_string = "og:video:height")]
+    VideoHeight,
+    #[strum(to_string = "og:video:secure_url")]
+    VideoSecureUrl,
     #[strum(to_string = "og:locale:alternate")]
     ExtraLocales,
 }
