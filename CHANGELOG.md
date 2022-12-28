@@ -4,7 +4,7 @@
 
 ### 🎁 Features
 
-- **✨ More robust `aria` type checking - [SaraVieira],[issue#2](https://github.com/axodotdev/axohtml/issues/2)[pr#12](https://github.com/axodotdev/axohtml/pull/12), [issue#3](https://github.com/axodotdev/axohtml/issues/3)[pr#11](https://github.com/axodotdev/axohtml/pull/11)]**
+- **✨ More robust `aria` type checking - [SaraVieira],[issue#2](https://github.com/axodotdev/axohtml/issues/2) [pr#12](https://github.com/axodotdev/axohtml/pull/12), [issue#3](https://github.com/axodotdev/axohtml/issues/3) [pr#11](https://github.com/axodotdev/axohtml/pull/11)**
 
   `aria-sort` and `aria-orientation` now offer more robust type checking following the guidelines of MDN you can see in their pages:
 
