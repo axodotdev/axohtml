@@ -15,6 +15,10 @@
 
   [`aria-orientation PR`](https://github.com/axodotdev/axohtml/pull/11)
 
+- **✨ Add twitter SEO tag support - [SaraVieira],[[pr16#](https://github.com/axodotdev/axohtml/pull/16)]**
+
+  Add support for meta tags used for twitter cards as showed in [their docs](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup)
+
 ### 🛠️ Fixes
 
 - **✨ Data Attributes now work with more than one hyphen** - [SaraVieira]

@@ -252,6 +252,53 @@ pub enum Metadata {
     Robots,
     #[strum(to_string = "viewport")]
     Viewport,
+    // Twitter Social meta card tags -> https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
+    #[strum(to_string = "twitter:card")]
+    TwitterCard,
+    #[strum(to_string = "twitter:site:id")]
+    TwitterSiteId,
+    #[strum(to_string = "twitter:site")]
+    TwitterSite,
+    #[strum(to_string = "twitter:creator:id")]
+    TwitterCreatorId,
+    #[strum(to_string = "twitter:creator")]
+    TwitterCreator,
+    #[strum(to_string = "twitter:description")]
+    TwitterDescription,
+    #[strum(to_string = "twitter:title")]
+    TwitterTitle,
+    #[strum(to_string = "twitter:image:alt")]
+    TwitterImageAlt,
+    #[strum(to_string = "twitter:image")]
+    TwitterImage,
+    #[strum(to_string = "twitter:player:width")]
+    TwitterPlayerWidth,
+    #[strum(to_string = "twitter:player:height")]
+    TwitterPlayerHeight,
+    #[strum(to_string = "twitter:player:stream")]
+    TwitterPlayerStream,
+    #[strum(to_string = "twitter:player")]
+    TwitterPlayer,
+    #[strum(to_string = "twitter:app:name:phone")]
+    TwitterAppNamePhone,
+    #[strum(to_string = "twitter:app:name:iphone")]
+    TwitterAppNameIphone,
+    #[strum(to_string = "twitter:app:id:iphone")]
+    TwitterAppIdIphone,
+    #[strum(to_string = "twitter:app:url:iphone")]
+    TwitterAppUrlIphone,
+    #[strum(to_string = "twitter:app:name:ipad")]
+    TwitterAppNameIpad,
+    #[strum(to_string = "twitter:app:id:ipad")]
+    TwitterAppIdIpad,
+    #[strum(to_string = "twitter:app:url:ipad")]
+    TwitterAppUrlIpad,
+    #[strum(to_string = "twitter:app:name:googleplay")]
+    TwitterAppNameGooglePlay,
+    #[strum(to_string = "twitter:app:id:googleplay")]
+    TwitterAppIdGooglePlay,
+    #[strum(to_string = "twitter:app:url:googleplay")]
+    TwitterAppUrlGooglePlay,
 }
 
 #[derive(EnumString, Display, PartialEq, Eq, PartialOrd, Ord, AsRefStr, IntoStaticStr)]
@@ -262,10 +309,24 @@ pub enum MetadataProperties {
     Type,
     #[strum(to_string = "og:image")]
     Image,
+    #[strum(to_string = "og:image:alt")]
+    ImageAlt,
+    #[strum(to_string = "og:image:type")]
+    ImageType,
+    #[strum(to_string = "og:image:width")]
+    ImageWidth,
+    #[strum(to_string = "og:image:height")]
+    ImageHeight,
+    #[strum(to_string = "og:image:secure_url")]
+    ImageSecureUrl,
     #[strum(to_string = "og:url")]
     Homepage,
     #[strum(to_string = "og:audio")]
     Audio,
+    #[strum(to_string = "og:audio:type")]
+    AudioType,
+    #[strum(to_string = "og:audio:secure_url")]
+    AudioSecureUrl,
     #[strum(to_string = "og:description")]
     Description,
     #[strum(to_string = "og:determiner")]
@@ -276,6 +337,16 @@ pub enum MetadataProperties {
     ParentSiteName,
     #[strum(to_string = "og:video")]
     Video,
+    #[strum(to_string = "og:video:alt")]
+    VideoAlt,
+    #[strum(to_string = "og:video:type")]
+    VideoType,
+    #[strum(to_string = "og:video:width")]
+    VideoWidth,
+    #[strum(to_string = "og:video:height")]
+    VideoHeight,
+    #[strum(to_string = "og:video:secure_url")]
+    VideoSecureUrl,
     #[strum(to_string = "og:locale:alternate")]
     ExtraLocales,
 }
