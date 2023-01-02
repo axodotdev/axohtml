@@ -499,3 +499,16 @@ fn test_js() {
 
     assert_eq!("<script>console.log('sup')</script>", frag.to_string());
 }
+
+#[test]
+fn test_twitter_cards() {
+    use crate as axohtml;
+    use crate::{dom::DOMTree, html};
+
+    let frag: DOMTree<String> = html!(<meta name="twitter:card" content="summary_large_image"/>);
+
+    assert_eq!(
+        "<meta content=\"summary_large_image\" name=\"twitter:card\"/>",
+        frag.to_string()
+    );
+}
