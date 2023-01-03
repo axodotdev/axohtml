@@ -1,7 +1,7 @@
 # axohtml
 
-![Github Actions Rust](https://github.com/axodotdev/axohtml/actions/workflows/rust.yml/badge.svg)
-![crates.io](https://img.shields.io/crates/v/axohtml.svg)
+[![Github Actions Rust](https://github.com/axodotdev/axohtml/actions/workflows/rust.yml/badge.svg)](https://github.com/axodotdev/axohtml/actions)
+[![crates.io](https://img.shields.io/crates/v/axohtml.svg)](https://crates.io/crates/axohtml)
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
 
 This crate provides the `html!` macro for building fully type checked HTML
