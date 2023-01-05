@@ -33,26 +33,6 @@ pub fn html(input: TokenStream) -> TokenStream {
     })
 }
 
-/// Construct a Dodrio node.
-///
-/// See the crate documentation for [`typed_html`][typed_html].
-///
-/// [typed_html]: ../typed_html/index.html
-#[cfg(feature = "dodrio")]
-#[proc_macro]
-pub fn dodrio(input: TokenStream) -> TokenStream {
-    let stream = lexer::unroll_stream(input.into(), false);
-    let result = html::expand_dodrio(&stream);
-    TokenStream::from(match result {
-        Err(err) => error::parse_error(&stream, &err),
-        Ok((bump, node)) => match node.into_dodrio_token_stream(&bump, false) {
-            Err(err) => err,
-            // Ok(success) => {println!("{}", success); panic!()},
-            Ok(success) => success,
-        },
-    })
-}
-
 /// This macro is used by `typed_html` internally to generate types and
 /// implementations for HTML elements.
 #[proc_macro]
