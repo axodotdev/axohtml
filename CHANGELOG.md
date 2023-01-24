@@ -1,44 +1,54 @@
 # Changelog
 
+## 0.4.0 - 2023-01-24
+
+### 🎁 Features
+
+- **✨ Add support for Permissions-Policy meta tag- [SaraVieira], [pr23]**
+
+  This pr adds support for using the [`Permissions-Policy` meta tag](https://www.w3.org/TR/permissions-policy-1/) that is used for defining a set of browser APIs you do not wish your website to have.
+
+[pr23]: https://github.com/axodotdev/axohtml/pull/23
+
 ## 0.3.0 - 2023-01-02
 
 ### 🎁 Features
 
-- **✨ More robust `aria` type checking - [SaraVieira], [I2]/[PR12], [I3]/[PR11]**
+- **✨ More robust `aria` type checking - [SaraVieira], [i2]/[pr12], [i3]/[pr11]**
 
   `aria-sort` and `aria-orientation` now offer more robust type checking following the guidelines of MDN you can see in their pages:
 
   - [`aria-sort`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-sort)
   - [`aria-orientation`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-orientation)
 
-[I2]: https://github.com/axodotdev/axohtml/issues/2
-[PR12]: https://github.com/axodotdev/axohtml/pull/12
-[I3]: https://github.com/axodotdev/axohtml/issues/3
-[PR11]: https://github.com/axodotdev/axohtml/pull/11
+[i2]: https://github.com/axodotdev/axohtml/issues/2
+[pr12]: https://github.com/axodotdev/axohtml/pull/12
+[i3]: https://github.com/axodotdev/axohtml/issues/3
+[pr11]: https://github.com/axodotdev/axohtml/pull/11
 
-- **✨ Add twitter SEO tag support - [SaraVieira], [PR17]**
+- **✨ Add twitter SEO tag support - [SaraVieira], [pr17]**
 
   Add support for meta tags used for twitter cards as showed in [their docs](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup)
 
-[PR17]: https://github.com/axodotdev/axohtml/pull/17
+[pr17]: https://github.com/axodotdev/axohtml/pull/17
 
 ### 🛠️ Fixes
 
-- **✨ Data Attributes now work with more than one hyphen - [SaraVieira], [PR10]**
+- **✨ Data Attributes now work with more than one hyphen - [SaraVieira], [pr10]**
 
   Our support for `data` attributes was limited in the way that it only supported one hyphen in said attributes, well, no more, use as many hyphens as your heart pleases
 
-[PR10]: https://github.com/axodotdev/axohtml/pull/10
+[pr10]: https://github.com/axodotdev/axohtml/pull/10
 
-- **✨ Allow `script` tags in HTML - [SaraVieira], [PR10]**
+- **✨ Allow `script` tags in HTML - [SaraVieira], [pr10]**
 
   We now allow you to add script tags in the HTML after the body as the HTML standards also allow
 
-- **✨ Allow unescaped text in`script`- [SaraVieira], [PR14]**
+- **✨ Allow unescaped text in`script`- [SaraVieira], [pr14]**
 
   Until now we were escaping the text passed down to the `script` tag and in the `script` tag is the only place we are sure we don't want to escape that so that's fixed and you can add `script` tags with unescaped text inside
 
-[PR14]: https://github.com/axodotdev/axohtml/pull/14
+[pr14]: https://github.com/axodotdev/axohtml/pull/14
 
 ## 0.2.0 - 2022-12-19
 
