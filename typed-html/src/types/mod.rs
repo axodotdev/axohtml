@@ -118,7 +118,7 @@ pub enum FormDialogMethod {
 pub enum HTTPEquiv {
     #[strum(to_string = "content-security-policy")]
     ContentSecurityPolicy,
-    #[strum(to_string = "Permissions-policy")]
+    #[strum(to_string = "Permissions-Policy")]
     PermissionsPolicy,
     #[strum(to_string = "refresh")]
     Refresh,
