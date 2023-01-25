@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.1 - 2023-01-24
+
+### 🛠️ Fixes
+
+- **✨ Fix capitalization for Permissions-Policy meta tag- [ashleygwilliams], [pr26]**
+
+  This PR updates the capitalization of the Permissions Policy header from
+  `Permissions-policy` to `Permissions-Policy`.
+
+[pr26]: https://github.com/axodotdev/axohtml/pull/26
+[ashleygwilliams]: https://github.com/ashleygwilliams
+
 ## 0.4.0 - 2023-01-24
 
 ### 🎁 Features
