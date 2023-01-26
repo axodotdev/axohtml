@@ -26,13 +26,21 @@ impl Node {
                 Ok(quote!(Box::new(axohtml::dom::TextNode::new(#text.to_string()))))
             }
             Node::Block(group) => {
-                let span = group.span();
-                let error =
-                    "you cannot use a block as a top level element or a required child element";
-                Err(quote_spanned! { span=>
-                    compile_error! { #error }
-                })
+                let group: TokenTree = group.into();
+                Ok(quote!(
+                    for child in #group.into_iter() {
+                        element.children.push(child);
+                    }
+                ))
             }
+            //Node::Block(group) => {
+            //    let span = group.span();
+            //    let error =
+            //        "you cannot use a block as a top level element or a required child element";
+            //    Err(quote_spanned! { span=>
+            //        compile_error! { #error }
+            //    })
+            //}
         }
     }
 
