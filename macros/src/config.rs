@@ -4,8 +4,8 @@ use crate::map::StringyMap;
 
 pub fn required_children(element: &str) -> &[&str] {
     match element {
-        "html" => &["head", "body"],
-        "head" => &["title"],
+        "html" => &["body"],
+        "head" => &[],
         _ => &[],
     }
 }
