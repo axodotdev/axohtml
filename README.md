@@ -168,10 +168,10 @@ Copyright 2018 Bodil Stokke, 2022 Axo Developer Co.
 [Display]: https://doc.rust-lang.org/std/fmt/trait.Display.html
 [String]: https://doc.rust-lang.org/std/string/struct.String.html
 [to_string]: https://doc.rust-lang.org/std/string/trait.ToString.html#tymethod.to_string
-[Node]: dom/trait.Node.html
+[Node]: https://docs.rs/axohtml/latest/axohtml/dom/trait.Node.html
 [FromStr]: https://doc.rust-lang.org/std/str/trait.FromStr.html
-[SpacedSet]: types/struct.SpacedSet.html
+[SpacedSet]: https://docs.rs/axohtml/latest/axohtml/types/struct.SpacedSet.html
 [IntoIterator]: https://doc.rust-lang.org/std/iter/trait.IntoIterator.html
 [Into]: https://doc.rust-lang.org/std/convert/trait.Into.html
 [Into::into]: https://doc.rust-lang.org/std/convert/trait.Into.html#method.into
-[DOMTree]: dom/type.DOMTree.html
+[DOMTree]: https://docs.rs/axohtml/latest/axohtml/dom/type.DOMTree.html
