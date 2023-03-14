@@ -154,7 +154,7 @@ pub struct UnsafeTextNode<T: OutputType + Send>(String, PhantomData<T>);
 ///
 /// This macro is useful for creating text macros inside code blocks that contain HTML
 /// that you do not want to be escaped. For example, if some other process renders Markdown
-/// to an HTML string and you want embed that HTML string in a typed-html template,
+/// to an HTML string and you want embed that HTML string in an axohtml template,
 /// you may want to avoid escaping the tags in that HTML string.
 ///
 /// # Examples

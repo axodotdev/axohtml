@@ -6,7 +6,7 @@ authors = ["Bodil Stokke <bodil@bodil.org>"]
 publish = false
 
 [[bin]]
-name = "typed-html-tests"
+name = "axohtml-tests"
 path = "main.rs"
 
 [dev-dependencies]

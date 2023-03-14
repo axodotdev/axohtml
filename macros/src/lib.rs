@@ -17,9 +17,9 @@ mod span;
 
 /// Construct a DOM tree.
 ///
-/// See the crate documentation for [`typed_html`][typed_html].
+/// See the crate documentation for [`axohtml`][axohtml].
 ///
-/// [typed_html]: ../typed_html/index.html
+/// [axohtml]: https://docs.rs/axohtml/
 #[proc_macro]
 pub fn html(input: TokenStream) -> TokenStream {
     let stream = lexer::unroll_stream(input.into(), false);
@@ -35,9 +35,9 @@ pub fn html(input: TokenStream) -> TokenStream {
 
 /// Construct a Dodrio node.
 ///
-/// See the crate documentation for [`typed_html`][typed_html].
+/// See the crate documentation for [`axohtml`][axohtml].
 ///
-/// [typed_html]: ../typed_html/index.html
+/// [axohtml]: https://docs.rs/axohtml/
 #[cfg(feature = "dodrio")]
 #[proc_macro]
 pub fn dodrio(input: TokenStream) -> TokenStream {
@@ -53,7 +53,7 @@ pub fn dodrio(input: TokenStream) -> TokenStream {
     })
 }
 
-/// This macro is used by `typed_html` internally to generate types and
+/// This macro is used by `axohtml` internally to generate types and
 /// implementations for HTML elements.
 #[proc_macro]
 pub fn declare_elements(input: TokenStream) -> TokenStream {
