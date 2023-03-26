@@ -29,7 +29,7 @@ pub type DOMTree<T> = Box<dyn Node<T>>;
 ///
 /// This structure is designed to be easily walked in order to render a DOM tree
 /// or diff against an existing tree. It's the stringly typed version of
-/// [`Node`][Node].
+/// [`Node`].
 ///
 /// It can be constructed from any ['Node'][Node]:
 ///
@@ -38,8 +38,6 @@ pub type DOMTree<T> = Box<dyn Node<T>>;
 ///     <p>"But how does she "<em>"eat?"</em></p>
 /// ).vnode()
 /// ```
-///
-/// [Node]: trait.Node.html
 pub enum VNode<'a, T: OutputType + 'a> {
     Text(&'a str),
     UnsafeText(&'a str),
@@ -56,20 +54,13 @@ pub struct VElement<'a, T: OutputType + 'a> {
 
 /// Trait for rendering a typed HTML node.
 ///
-/// All [HTML elements][elements] implement this, in addition to
-/// [`TextNode`][TextNode].
+/// All [HTML elements][crate::elements] implement this, in addition to
+/// [`TextNode`].
 ///
-/// It implements [`Display`][Display] for rendering to strings, and the
-/// [`vnode()`][vnode] method can be used to render a virtual DOM structure.
-///
-/// [Display]: https://doc.rust-lang.org/std/fmt/trait.Display.html
-/// [TextNode]: struct.TextNode.html
-/// [elements]: ../elements/index.html
-/// [vnode]: #tymethod.vnode
+/// It implements [`Display`] for rendering to strings, and the
+/// [`vnode()`][Self::vnode] method can be used to render a virtual DOM structure.
 pub trait Node<T: OutputType + Send>: Display + Send {
-    /// Render the node into a [`VNode`][VNode] tree.
-    ///
-    /// [VNode]: enum.VNode.html
+    /// Render the node into a [`VNode`] tree.
     fn vnode(&mut self) -> VNode<T>;
 }
 
@@ -87,9 +78,7 @@ where
 
 /// Trait for querying a typed HTML element.
 ///
-/// All [HTML elements][elements] implement this.
-///
-/// [elements]: ../elements/index.html
+/// All [HTML elements][crate::elements] implement this.
 pub trait Element<T: OutputType + Send>: Node<T> {
     /// Get the name of the element.
     fn name() -> &'static str;
@@ -189,10 +178,8 @@ macro_rules! unsafe_text {
 impl<T: OutputType + Send> TextNode<T> {
     /// Construct a text node.
     ///
-    /// The preferred way to construct a text node is with the [`text!()`][text]
+    /// The preferred way to construct a text node is with the [`text!()`][crate::text]
     /// macro.
-    ///
-    /// [text]: ../macro.text.html
     pub fn new<S: Into<String>>(s: S) -> Self {
         TextNode(s.into(), PhantomData)
     }
@@ -234,10 +221,8 @@ impl<T: OutputType + Send> PhrasingContent<T> for TextNode<T> {}
 impl<T: OutputType + Send> UnsafeTextNode<T> {
     /// Construct a unsafe text node.
     ///
-    /// The preferred way to construct a unsafe text node is with the [`unsafe_text!()`][unsafe_text]
+    /// The preferred way to construct a unsafe text node is with the [`unsafe_text!()`][crate::unsafe_text]
     /// macro.
-    ///
-    /// [unsafe_text]: ../macro.unsafe_text.html
     pub fn new<S: Into<String>>(s: S) -> Self {
         UnsafeTextNode(s.into(), PhantomData)
     }
