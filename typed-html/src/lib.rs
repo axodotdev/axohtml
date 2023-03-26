@@ -1,6 +1,13 @@
 #![recursion_limit = "128"]
-//! This crate provides the `html!` macro for building HTML documents inside your
-//! Rust code using roughly [JSX] compatible syntax.
+//! This crate provides the `html!` macro for building fully type checked HTML
+//! documents inside your Rust code using roughly [JSX] compatible syntax.
+//!
+//! This crate is a fork of the great [Bodil Stokke's] [typed-html] crate. Opted
+//! for a fork instead of maintainership because not currently intending to use or
+//! maintain the Wasm compatibility (for now).
+//!
+//! [Bodil Stokke's]: https://github.com/bodil
+//! [typed-html]: https://github.com/bodil/typed-html
 //!
 //! # Quick Preview
 //!
