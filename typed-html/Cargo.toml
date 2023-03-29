@@ -13,8 +13,8 @@ keywords = ["jsx", "html"]
 
 [dependencies]
 axohtml-macros = { path = "../macros" }
-strum = "0.23"
-strum_macros = "0.23"
+strum = "0.24"
+strum_macros = "0.24"
 mime = "0.3.13"
 language-tags = "0.3"
 htmlescape = "0.3.1"
