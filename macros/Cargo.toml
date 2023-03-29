@@ -17,9 +17,9 @@ proc-macro = true
 
 [dependencies]
 lalrpop-util = "0.19"
-ansi_term = "0.12.1"
 proc-macro2 = "1.0.54"
 quote = "1.0.26"
+console = "0.15.5"
 
 [build-dependencies]
 lalrpop = "0.19.9"

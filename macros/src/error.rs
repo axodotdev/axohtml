@@ -1,5 +1,5 @@
 use crate::lexer::Token;
-use ansi_term::Style;
+use console::style;
 use lalrpop_util::ParseError::*;
 use proc_macro2::{Ident, TokenStream};
 use quote::{quote, quote_spanned};
@@ -71,7 +71,7 @@ pub fn parse_error(input: &[Token], error: &ParseError) -> TokenStream {
                 // special case: you probably meant to quote that text
                 let help_msg = format!(
                     "text nodes need to be quoted, eg. {}",
-                    Style::new().bold().paint("<p>\"Hello Joe!\"</p>")
+                    style("<p>\"Hello Joe!\"</p>").bold(),
                 );
                 Some(quote_spanned! {span=>
                     compile_error! { #help_msg }
