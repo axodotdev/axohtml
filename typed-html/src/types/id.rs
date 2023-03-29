@@ -12,9 +12,7 @@ use super::Class;
 /// and is followed by any number of alphanumeric characters and the
 /// `_`, `-` and `.` characters.
 ///
-/// See also [`Class`][Class].
-///
-/// [Class]: struct.Class.html
+/// See also [`Class`].
 #[derive(Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug)]
 pub struct Id(String);
 

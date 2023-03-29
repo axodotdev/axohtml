@@ -8,9 +8,7 @@ use std::str::FromStr;
 ///
 /// This type represents a list of non-unique values represented as a string of
 /// values separated by spaces in HTML attributes. This is rarely used; a
-/// [`SpacedSet`][SpacedSet] of unique values is much more common.
-///
-/// [SpacedSet]: struct.SpacedSet.html
+/// [`SpacedSet`][super::SpacedSet] of unique values is much more common.
 #[derive(Clone, PartialEq, Eq, Hash)]
 pub struct SpacedList<A>(Vec<A>);
 

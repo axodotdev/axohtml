@@ -1,6 +1,13 @@
 #![recursion_limit = "128"]
-//! This crate provides the `html!` macro for building HTML documents inside your
-//! Rust code using roughly [JSX] compatible syntax.
+//! This crate provides the `html!` macro for building fully type checked HTML
+//! documents inside your Rust code using roughly [JSX] compatible syntax.
+//!
+//! This crate is a fork of the great [Bodil Stokke's] [typed-html] crate. Opted
+//! for a fork instead of maintainership because not currently intending to use or
+//! maintain the Wasm compatibility (for now).
+//!
+//! [Bodil Stokke's]: https://github.com/bodil
+//! [typed-html]: https://github.com/bodil/typed-html
 //!
 //! # Quick Preview
 //!
@@ -75,14 +82,14 @@
 //! (see the Syntax section above).
 //!
 //! The `html!` macro will add an [`.into()`][Into::into] call to the value
-//! expression, so that you can use any type that has an [`Into<A>`][Into] trait
+//! expression, so that you can use any type that has an [`Into<A>`] trait
 //! defined for the actual attribute type `A`.
 //!
 //! As a special case, if you use a string literal, the macro will instead use the
-//! [`FromStr<A>`][FromStr] trait to try and parse the string literal into the
+//! [`FromStr<A>`][std::str::FromStr] trait to try and parse the string literal into the
 //! expected type. This is extremely useful for eg. CSS classes, letting you type
 //! `class="css-class-1 css-class-2"` instead of going to the trouble of
-//! constructing a [`SpacedSet<Class>`][SpacedSet]. The big caveat for this:
+//! constructing a [`SpacedSet<Class>`][types::SpacedSet]. The big caveat for this:
 //! currently, the macro is not able to validate the string at compile time, and the
 //! conversion will panic at runtime if the string is invalid.
 //!
@@ -112,7 +119,7 @@
 //! # Generated Nodes
 //!
 //! Brace blocks in the child node position are expected to return an
-//! [`IntoIterator`][IntoIterator] of [`DOMTree`][DOMTree]s. You can return single
+//! [`IntoIterator`] of [`DOMTree`][dom::DOMTree]s. You can return single
 //! elements or text nodes, as they both implement `IntoIterator` for themselves.
 //! The macro will consume this iterator at runtime and insert the generated nodes
 //! as children in the expected position.
@@ -141,9 +148,9 @@
 //!
 //! ## Render to a string
 //!
-//! The DOM tree data structure implements [`Display`][Display], so you can call
-//! [`to_string()`][to_string] on it to render it to a [`String`][String]. If you
-//! plan to do this, the type of the tree should be [`DOMTree<String>`][DOMTree] to
+//! The DOM tree data structure implements [`Display`], so you can call
+//! [`to_string()`][std::string::ToString::to_string] on it to render it to a [`String`]. If you
+//! plan to do this, the type of the tree should be [`DOMTree<String>`][dom::DOMTree] to
 //! ensure you're not using any event handlers that can't be printed.
 //!
 //! ```
@@ -161,7 +168,7 @@
 //! ## Render to a virtual DOM
 //!
 //! The DOM tree structure also implements a method called `vnode()`, which renders
-//! the tree to a tree of [`VNode`][VNode]s, which is a mirror of the generated tree
+//! the tree to a tree of [`VNode`][dom::VNode]s, which is a mirror of the generated tree
 //! with every attribute value rendered into `String`s. You can walk this virtual
 //! DOM tree and pass it on to your favourite virtual DOM system.
 //!
@@ -174,17 +181,6 @@
 //! <http://mozilla.org/MPL/2.0/>.
 //!
 //! [JSX]: https://reactjs.org/docs/introducing-jsx.html
-//! [Display]: https://doc.rust-lang.org/std/fmt/trait.Display.html
-//! [String]: https://doc.rust-lang.org/std/string/struct.String.html
-//! [to_string]: https://doc.rust-lang.org/std/string/trait.ToString.html#tymethod.to_string
-//! [Node]: dom/trait.Node.html
-//! [VNode]: dom/enum.VNode.html
-//! [FromStr]: https://doc.rust-lang.org/std/str/trait.FromStr.html
-//! [SpacedSet]: types/struct.SpacedSet.html
-//! [IntoIterator]: https://doc.rust-lang.org/std/iter/trait.IntoIterator.html
-//! [Into]: https://doc.rust-lang.org/std/convert/trait.Into.html
-//! [Into::into]: https://doc.rust-lang.org/std/convert/trait.Into.html#method.into
-//! [DOMTree]: dom/type.DOMTree.html
 
 pub extern crate htmlescape;
 

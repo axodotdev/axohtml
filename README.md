@@ -34,7 +34,7 @@ let mut doc: DOMTree<String> = html!(
                 </p>
             )) }
             <p class="citation-needed">
-                "Every company should be a developer experience company"
+                "Every company should be a developer experience company."
             </p>
         </body>
     </html>
@@ -95,14 +95,14 @@ conversion will panic at runtime if the string is invalid.
 ### Example
 
 ```rust
-let classList: SpacedSet<Class> = ["foo", "bar", "baz"].into();
+let classList: SpacedSet<Class> = ["foo", "bar", "baz"].try_into()?;
 html!(
     <div>
         <div class="foo bar baz" />         // parses a string literal
         <div class=["foo", "bar", "baz"] /> // uses From<[&str, &str, &str]>
         <div class=classList />             // uses a variable in scope
         <div class={                        // evaluates a code block
-            SpacedSet::from(["foo", "bar", "baz"])
+            SpacedSet::try_from(["foo", "bar", "baz"])?
         } />
     </div>
 )
@@ -151,7 +151,7 @@ assert_eq!("<p>Hello Axo</p>", doc_str);
 ### Render to a virtual DOM
 
 The DOM tree structure also implements a method called `vnode()`, which renders
-the tree to a tree of [`Node`][Node]s, which is a mirror of the generated tree
+the tree to a tree of [`VNode`][VNode]s, which is a mirror of the generated tree
 with every attribute value rendered into `String`s. You can walk this virtual
 DOM tree and pass it on to your favourite virtual DOM system.
 
@@ -168,10 +168,10 @@ Copyright 2018 Bodil Stokke, 2022 Axo Developer Co.
 [Display]: https://doc.rust-lang.org/std/fmt/trait.Display.html
 [String]: https://doc.rust-lang.org/std/string/struct.String.html
 [to_string]: https://doc.rust-lang.org/std/string/trait.ToString.html#tymethod.to_string
-[Node]: dom/trait.Node.html
+[VNode]: https://docs.rs/axohtml/latest/axohtml/dom/enum.VNode.html
 [FromStr]: https://doc.rust-lang.org/std/str/trait.FromStr.html
-[SpacedSet]: types/struct.SpacedSet.html
+[SpacedSet]: https://docs.rs/axohtml/latest/axohtml/types/struct.SpacedSet.html
 [IntoIterator]: https://doc.rust-lang.org/std/iter/trait.IntoIterator.html
 [Into]: https://doc.rust-lang.org/std/convert/trait.Into.html
 [Into::into]: https://doc.rust-lang.org/std/convert/trait.Into.html#method.into
-[DOMTree]: dom/type.DOMTree.html
+[DOMTree]: https://docs.rs/axohtml/latest/axohtml/dom/type.DOMTree.html
