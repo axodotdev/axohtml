@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.5.0 - 2023-03-29
+
+### 🛠️  Fixes
+
+- **✨ Fix broken links and naming issues from fork transition- [adrianheine], [pr29]**
+
+    This PR helps clean up a variety of references and links that weren't caught
+    when the project transitioned from a fork of the `typed-html` crate.
+
+### 🌿 Maintenance
+
+- **✨ Dependency gardening - [ashleygwilliams], [pr32]/[pr33]**
+
+    General dependency maintenance with two notable actions:
+
+    - replace `ansi_term` with `console` to match the rest of the axo toolchain
+    - update `lalrpop` to 0.19.9 (latest release) to address warning
+
+[adrianheine]: https://github.com/adrianheine
+[pr29]: https://github.com/axodotdev/axohtml/pull/29
+[pr32]: https://github.com/axodotdev/axohtml/pull/32
+[pr33]: https://github.com/axodotdev/axohtml/pull/33
+
 ## 0.4.1 - 2023-01-24
 
 ### 🛠️ Fixes
