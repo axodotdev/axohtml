@@ -129,7 +129,7 @@ declare_elements! {
         formmethod: FormMethod,
         formnovalidate: Bool,
         formtarget: Target,
-        name: Id,
+        name: String,
         type: ButtonType,
         value: String,
     } in [FlowContent, PhrasingContent, InteractiveContent, FormContent] with PhrasingContent;
@@ -171,7 +171,7 @@ declare_elements! {
         autocomplete: OnOff,
         enctype: FormEncodingType,
         method: FormMethod,
-        name: Id,
+        name: String,
         novalidate: Bool,
         target: Target,
     } in [FlowContent] with FlowContent;
@@ -230,7 +230,7 @@ declare_elements! {
         min: String,
         minlength: usize,
         multiple: Bool,
-        name: Id,
+        name: String,
         pattern: String,
         placeholder: String,
         readonly: Bool,
@@ -288,7 +288,7 @@ declare_elements! {
     output {
         for: SpacedSet<Id>,
         form: Id,
-        name: Id,
+        name: String,
     } in [FlowContent, PhrasingContent, FormContent] with PhrasingContent;
     p in [FlowContent] with PhrasingContent;
     pre in [FlowContent] with PhrasingContent;
@@ -320,7 +320,7 @@ declare_elements! {
         disabled: Bool,
         form: Id,
         multiple: Bool,
-        name: Id,
+        name: String,
         required: Bool,
         size: usize,
     } in [FlowContent, PhrasingContent, InteractiveContent, FormContent] with SelectContent;
@@ -339,7 +339,7 @@ declare_elements! {
         form: Id,
         maxlength: usize,
         minlength: usize,
-        name: Id,
+        name: String,
         placeholder: String,
         readonly: Bool,
         required: Bool,
@@ -509,6 +509,27 @@ fn test_twitter_cards() {
 
     assert_eq!(
         "<meta content=\"summary_large_image\" name=\"twitter:card\"/>",
+        frag.to_string()
+    );
+}
+
+#[test]
+fn test_form_element_names_can_be_any_string() {
+    use crate as axohtml;
+    use crate::{dom::DOMTree, html};
+
+    let frag: DOMTree<String> = html!(
+        <form name="form[0]">
+            <input type="text" name="form[0].text"/>
+            <button name="form[0].button"/>
+            <output name="form[0].output"/>
+            <select name="form[0].select"/>
+            <textarea name="form[0].textarea"/>
+        </form>
+    );
+
+    assert_eq!(
+        "<form name=\"form[0]\"><input name=\"form[0].text\" type=\"text\"/><button name=\"form[0].button\"></button><output name=\"form[0].output\"></output><select name=\"form[0].select\"></select><textarea name=\"form[0].textarea\"></textarea></form>",
         frag.to_string()
     );
 }
