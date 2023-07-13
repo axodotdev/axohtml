@@ -31,20 +31,25 @@ impl Class {
     }
 }
 
+// w3.org defines a strict grammar for classes in the CSS parser at
+// https://www.w3.org/TR/CSS21/grammar.html#scanner, as shown below where
+// ident is the class name:
+//  ident		-?{nmstart}{nmchar}*
+//  nmstart		[_a-z]|{nonascii}|{escape}
+//  nmchar		[_a-z0-9-]|{nonascii}|{escape}
+//  nonascii	[\240-\377] //Note: this is 0xA0 to 0xFF in hex
+//  unicode		\\{h}{1,6}(\r\n|[ \t\r\n\f])?
+//  escape		{unicode}|\\[^\r\n\f0-9a-f]
+// w3.org defines a very different grammar for class names on the HTML side at
+// https://www.w3.org/TR/2011/WD-html5-20110525/elements.html#classes, which
+// has no limits other than spaces not being allowed. This implementation is
+// for typed html and will use the HTML grammar.
 impl FromStr for Class {
     type Err = &'static str;
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        let mut chars = s.chars();
-        match chars.next() {
-            None => return Err("class name cannot be empty"),
-            Some(c) if !c.is_alphabetic() => {
-                return Err("class name must start with an alphabetic character")
-            }
-            _ => (),
-        }
-        for c in chars {
-            if !c.is_alphanumeric() && c != '_' && c != '-' && c != '.' {
-                return Err("class name can only contain alphanumerics, dash, dot and underscore");
+        for c in s.chars() {
+            if c.is_whitespace() {
+                return Err("class name may not contain spaces");
             }
         }
         Ok(Class(s.to_string()))
@@ -75,4 +80,37 @@ impl Deref for Class {
     fn deref(&self) -> &Self::Target {
         &self.0
     }
+}
+
+#[test]
+fn test_from_string() {
+    use crate::types::Class;
+    // This test covers some tricky examples from TailwindsCSS
+    // that don't quite pass the strict CSS-style grammar but
+    // are valid in HTML.
+
+    assert_eq!(
+        Ok(Class(String::from("-bottom"))),
+        Class::from_str("-bottom")
+    );
+
+    assert_eq!(
+        Ok(Class(String::from("top-[3px]"))),
+        Class::from_str("top-[3px]")
+    );
+
+    assert_eq!(
+        Ok(Class(String::from("md:top-6"))),
+        Class::from_str("md:top-6")
+    );
+
+    assert_eq!(
+        Ok(Class(String::from("w-1/2"))),
+        Class::from_str("w-1/2")
+    );
+
+    assert_eq!(
+        Ok(Class(String::from("bg-[#50d71e]"))),
+        Class::from_str("bg-[#50d71e]")
+    );
 }
