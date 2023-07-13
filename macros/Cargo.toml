@@ -20,6 +20,8 @@ lalrpop-util = "0.19"
 proc-macro2 = "1.0.54"
 quote = "1.0.26"
 console = "0.15.5"
+rust-format = { version="0.3.4", features=["pretty_please"]}
+pretty_assertions = "1.4.0"
 
 [build-dependencies]
 lalrpop = "0.19.9"
