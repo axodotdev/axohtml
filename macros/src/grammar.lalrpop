@@ -60,14 +60,14 @@ HtmlIdent: Ident = {
     <init:(<Ident> "-")*> <last:Ident> => {
         let mut init = init;
         init.push(last);
-        let (span, name) = init.into_iter().fold((None, String::new()), |(span, name), token| {
+        let (span, name): (Option<proc_macro2::Span>, String) = init.into_iter().fold((None, String::new()), |(span, name), token| {
             (
                 match span {
-                    None => Some(token.span().unstable()),
+                    None => Some(token.span()),
                     Some(span) => {
                         #[cfg(can_join_spans)]
                         {
-                            span.join(token.span().unstable())
+                            span.join(token.span())
                         }
                         #[cfg(not(can_join_spans))]
                         {
