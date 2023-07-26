@@ -26,15 +26,15 @@ pub fn html(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     html_impl(input.into()).into()
 }
 fn html_impl(input: proc_macro2::TokenStream) -> proc_macro2::TokenStream {
-    let stream = lexer::unroll_stream(input.into(), false);
+    let stream = lexer::unroll_stream(input, false);
     let result = html::expand_html(&stream);
-    proc_macro2::TokenStream::from(match result {
+    match result {
         Err(err) => error::parse_error(&stream, &err),
         Ok((node, ty)) => match node.into_token_stream(&ty) {
             Err(err) => err,
             Ok(success) => success,
         },
-    })
+    }
 }
 
 /// Construct a Dodrio node.
@@ -65,9 +65,9 @@ pub fn declare_elements(input: proc_macro::TokenStream) -> proc_macro::TokenStre
 }
 
 fn declare_elements_impl(input: proc_macro2::TokenStream) -> proc_macro2::TokenStream {
-    let stream = lexer::keywordise(lexer::unroll_stream(input.into(), true));
+    let stream = lexer::keywordise(lexer::unroll_stream(input, true));
     let result = declare::expand_declare(&stream);
-    proc_macro2::TokenStream::from(match result {
+    match result {
         Err(err) => error::parse_error(&stream, &err),
         Ok(decls) => {
             let mut out = proc_macro2::TokenStream::new();
@@ -76,7 +76,7 @@ fn declare_elements_impl(input: proc_macro2::TokenStream) -> proc_macro2::TokenS
             }
             out
         }
-    })
+    }
 }
 
 #[test]
