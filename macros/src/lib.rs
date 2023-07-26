@@ -98,7 +98,9 @@ fn test_declare_anchor_element() {
     let output = declare_elements_impl(input);
 
     pretty_assertions::assert_eq!(
-        rust_format::PrettyPlease::default().format_str(output.to_string()).unwrap(),
+        rust_format::PrettyPlease::default()
+            .format_str(output.to_string())
+            .unwrap(),
         include_str!("tests/declare-anchor-element.rs")
     )
 }
@@ -117,7 +119,9 @@ fn test_html_anchor_element() {
     let output = format!("fn html() {}", output.to_string());
 
     pretty_assertions::assert_eq!(
-        rust_format::PrettyPlease::default().format_str(output.to_string()).unwrap(),
+        rust_format::PrettyPlease::default()
+            .format_str(output.to_string())
+            .unwrap(),
         include_str!("tests/generate-anchor-element.rs")
     )
 }
@@ -137,7 +141,9 @@ fn test_html_button_event() {
     let output = format!("fn html() {}", output.to_string());
 
     pretty_assertions::assert_eq!(
-        rust_format::PrettyPlease::default().format_str(output.to_string()).unwrap(),
+        rust_format::PrettyPlease::default()
+            .format_str(output.to_string())
+            .unwrap(),
         include_str!("tests/generate-button-event.rs")
     )
 }

@@ -26,23 +26,20 @@ fn ui() {
 
 #[test]
 fn test_subtree() {
-    use axohtml::html;
     use axohtml::dom::DOMTree;
+    use axohtml::html;
 
     let output: DOMTree<String> = html!(
         <h1>"This is HTML"</h1>
     );
 
-    assert_eq!(
-        output.to_string(),
-        "<h1>This is HTML</h1>"
-    )
+    assert_eq!(output.to_string(), "<h1>This is HTML</h1>")
 }
 
 #[test]
 fn test_button_onclick() {
-    use axohtml::html;
     use axohtml::dom::DOMTree;
+    use axohtml::html;
 
     let output: DOMTree<String> = html!(
         <button onclick="alert(1)">"Click me"</button>
@@ -57,16 +54,16 @@ fn test_button_onclick() {
 
 #[test]
 fn test_flowcontent_function() {
-    use axohtml::html;
     use axohtml::dom::DOMTree;
     use axohtml::elements::FlowContent;
+    use axohtml::html;
 
     fn content() -> Box<dyn FlowContent<String>> {
         return html!(
             <h1>
                 "This is HTML"
             </h1>
-        )
+        );
     }
 
     let output: DOMTree<String> = html!(
@@ -75,24 +72,21 @@ fn test_flowcontent_function() {
         </div>
     );
 
-    assert_eq!(
-        output.to_string(),
-        "<div><h1>This is HTML</h1></div>"
-    )
+    assert_eq!(output.to_string(), "<div><h1>This is HTML</h1></div>")
 }
 
 #[test]
 fn test_phrasingcontent_function() {
-    use axohtml::{html, text};
     use axohtml::dom::DOMTree;
     use axohtml::elements::PhrasingContent;
+    use axohtml::{html, text};
 
     fn italicized(content: &str) -> Box<dyn PhrasingContent<String>> {
         return html!(
             <i>
                 { text!(content) }
             </i>
-        )
+        );
     }
 
     let output: DOMTree<String> = html!(
@@ -102,17 +96,14 @@ fn test_phrasingcontent_function() {
         </p>
     );
 
-    assert_eq!(
-        output.to_string(),
-        "<p>This is <i>HTML</i></p>"
-    )
+    assert_eq!(output.to_string(), "<p>This is <i>HTML</i></p>")
 }
 
 #[test]
 fn test_template_function() {
-    use axohtml::html;
     use axohtml::dom::DOMTree;
     use axohtml::elements::FlowContent;
+    use axohtml::html;
 
     fn layout(body: impl FnOnce() -> Box<dyn FlowContent<String>>) -> DOMTree<String> {
         return html!(
@@ -120,15 +111,17 @@ fn test_template_function() {
                 <h1>"Header"</h1>
                 { body() }
             </section>
-        )
+        );
     }
 
-    let output: DOMTree<String> = layout(|| {html!(
-        <div>
-            <h2>"Subheading"</h2>
-            <p>"This is content!"</p>
-        </div>
-    )});
+    let output: DOMTree<String> = layout(|| {
+        html!(
+            <div>
+                <h2>"Subheading"</h2>
+                <p>"This is content!"</p>
+            </div>
+        )
+    });
 
     assert_eq!(
         output.to_string(),
@@ -138,8 +131,8 @@ fn test_template_function() {
 
 #[test]
 fn test_inline_script() {
-    use axohtml::{html, unsafe_text};
     use axohtml::dom::DOMTree;
+    use axohtml::{html, unsafe_text};
 
     let output: DOMTree<String> = html!(
         <script>
@@ -147,8 +140,5 @@ fn test_inline_script() {
         </script>
     );
 
-    assert_eq!(
-        output.to_string(),
-        "<script>alert(1);</script>"
-    )
+    assert_eq!(output.to_string(), "<script>alert(1);</script>")
 }
